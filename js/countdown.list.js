@@ -1,4 +1,6 @@
 (function (){
+    var noop = function (){};
+    
     function CounterNode (opts){
         if (opts === undefined) {
             opts = {};
@@ -14,9 +16,9 @@
         this.begin = new Date(Math.floor(this.begin / 1e3) * 1e3);
         this.end = new Date(Math.floor(this.end / 1e3) * 1e3);
 
-        this.first = opts.first ? opts.first : (function(){});    //刚刚触发倒计时
-        this.every = opts.every ? opts.every : (function(){});    //倒计时中
-        this.finish = opts.finish ? opts.finish : (function(){}); //完成倒计时
+        this.first = opts.first ? opts.first : noop;    //刚刚触发倒计时
+        this.every = opts.every ? opts.every : noop;    //倒计时中
+        this.finish = opts.finish ? opts.finish : noop; //完成倒计时
     }
 
     CounterNode.prototype = {
